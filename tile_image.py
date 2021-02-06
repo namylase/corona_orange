@@ -6,15 +6,15 @@ def tile_image(img_name, max_people_size, input_size=(4000, 3000), output_size=(
     m = max_people_size
     n = []  # 가로,세로 타일 갯수
     resized_size = []  # resized size
-    padding_size=[]  # right,bottom padding_size
+    padding_size=[]  # 0206 right,bottom padding_size
 
     for i, (inp, out) in enumerate(zip(input_size, output_size)):
-        n.append((inp - m) // (out - m)+1)
+        n.append((inp - m) // (out - m)+1)  # 0206
         resized_size.append(n[i] * (out - m) + m)
-        padding_size.append(resized_size[i]-input_size[i])
+        padding_size.append(resized_size[i]-input_size[i])   # 0206
 
     src = cv2.imread('data/'+img_name, cv2.IMREAD_COLOR)
-    dst = cv2.copyMakeBorder(src, 0, padding_size[1], 0, padding_size[0], cv2.BORDER_CONSTANT)
+    dst = cv2.copyMakeBorder(src, 0, padding_size[1], 0, padding_size[0], cv2.BORDER_CONSTANT)  # 0206
 
     img_name_only = img_name.replace('.jpg', '')
     path = 'output/' + img_name_only + '/'

@@ -44,7 +44,7 @@ def draw_bbox(image, bboxes, show_label=True):
     return image
 
 
-def section_image(img_name, iou_threshold=0.25, input_size=(4000,3000)):
+def section_image(img_name, iou_threshold=0.25, input_size=(4000, 3000)):   # 0206
     img_name_only = img_name.replace('.jpg', '')
     image_folder = 'output/' + img_name_only +'/mergedtxt/'
     file_list = os.listdir(image_folder)
@@ -95,7 +95,7 @@ def section_image(img_name, iou_threshold=0.25, input_size=(4000,3000)):
     src_bbox=draw_bbox(src,final_bbox,show_label=True)
 
     #print(src_bbox.shape)
-    src_bbox=src_bbox[:input_size[1], :input_size[0]]
+    src_bbox=src_bbox[:input_size[1], :input_size[0]]      # 0206
     cv2.imwrite('output/'+img_name_only+'_final.jpg', src_bbox)
 
     np.savetxt('output/'+f'{img_name_only}_final.txt', final_bbox, fmt='%i')
