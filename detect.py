@@ -168,4 +168,4 @@ if __name__ == "__main__":
         plt.close()
 
     merge_image.merge_image(opt.image_name, opt.people_pixel_size, (opt.input_img_width, opt.input_img_height), (opt.img_size, opt.img_size))
-    section_image.section_image(opt.image_name,opt.iou_thres )
+    section_image.section_image(opt.image_name,opt.iou_thres, (opt.input_img_width, opt.input_img_height))

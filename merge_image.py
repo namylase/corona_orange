@@ -8,11 +8,13 @@ def merge_image(img_name, max_people_size, input_size=(4000, 3000), output_size=
     m = max_people_size
     n = []  # 가로,세로 타일 갯수
     resized_size = []  # resized size
+    padding_size=[]
     center_box = np.array([[0, 0, 0, 0, 0]], dtype=np.int16)
 
     for i, (inp, out) in enumerate(zip(input_size, output_size)):
-        n.append((inp - m) // (out - m))
+        n.append((inp - m) // (out - m)+1)
         resized_size.append(n[i] * (out - m) + m)
+        padding_size.append(resized_size[i]-input_size[i])
 
     img_name_only = img_name.replace('.jpg', '')
     # merge 된 resized 이미지 사이즈로 박스좌표 바꾸기
